@@ -31,7 +31,7 @@ class AuthController extends Controller
             return response()->json(['user' => $user, 'bearer_token' => $token]);
         }
 
-        return response()->json(['message' => 'Error.....'], 401);
+        return response()->json(['message' => 'Cannot find your account'], 401);
     }
 
     public function logout(Request $request)

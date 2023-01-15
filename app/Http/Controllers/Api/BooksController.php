@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DestroyBookRequest;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
+use App\Http\Resources\BooksResource;
 use App\Repository\Books\BookRepository;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        return response()->json($this->bookRepository->getList());
+        return response()->json(BooksResource::collection($this->bookRepository->getList()));
     }
 
     /**
@@ -34,7 +35,7 @@ class BooksController extends Controller
      */
     public function getSpecific($id)
     {
-        return response()->json($this->bookRepository->getListById($id));
+        return response()->json(new BooksResource($this->bookRepository->getListById($id)));
     }
 
     /**
