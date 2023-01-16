@@ -19,7 +19,6 @@ class CreateBooksTable extends Migration
             $table->string('sub_title');
             $table->string('author');
             $table->double('price', 8, 2);
-            $table->string('image');
             $table->timestamps();
         });
     }

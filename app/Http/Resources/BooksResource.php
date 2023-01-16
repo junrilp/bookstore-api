@@ -17,7 +17,6 @@ class BooksResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'image' => URL::asset('/images/' . $this->image),
             'title' => $this->title,
             'sub_title' => $this->sub_title,
             'author' => $this->author,

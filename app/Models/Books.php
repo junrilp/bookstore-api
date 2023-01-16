@@ -15,7 +15,6 @@ class Books extends Model
         'sub_title',
         'author',
         'price',
-        'image'
     ];
 
 }

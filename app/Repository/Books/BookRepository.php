@@ -16,38 +16,24 @@ use App\Models\Books;
         }
 
         public function addBook(array $form)
-        {
-            $imageName = NULL;
-
-            if (isset($form['image'])) {
-                $imageName = time().'.'.$form['image']->extension();
-                $form['image']->move(public_path('images'), $imageName);
-            }
-            
+        {   
             return Books::create([
                 'title' => $form['title'],
                 'sub_title' => $form['sub_title'],
                 'author' => $form['author'],
                 'price' => $form['price'],
-                'image' => $imageName,
             ]);
         }
 
         public function updateBook(int $id, array $form)
         {   
             $books = Books::whereId($id);
-            $imageName = $books->select('image')->first()->image;
             
-            if (isset($form['image'])) {
-                $imageName = time().'.'.$form['image']->extension();
-                $form['image']->move(public_path('images'), $imageName);
-            }
             return $books->update([
                     'title' => $form['title'],
                     'sub_title' => $form['sub_title'],
                     'author' => $form['author'],
                     'price' => $form['price'],
-                    'image' => $imageName,
                 ]);
         }
 
